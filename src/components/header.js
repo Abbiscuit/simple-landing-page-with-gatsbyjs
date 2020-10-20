@@ -1,42 +1,70 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import styled from "styled-components"
+import { Link } from "gatsby"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+const Header = () => {
+  return (
+    <HeaderWrapper>
+      <InnnerWrapper>
+        <Title>+Design</Title>
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
+        <Menu>
+          <MenuList>
+            <MenuItem to="/">Home</MenuItem>
+          </MenuList>
+          <MenuList>
+            <MenuItem to="/contact">contact</MenuItem>
+          </MenuList>
+        </Menu>
+      </InnnerWrapper>
+    </HeaderWrapper>
+  )
 }
 
 export default Header
+
+const HeaderWrapper = styled.header`
+  position: fixed;
+  top: 0px;
+  left: 0px;
+
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+`
+
+const InnnerWrapper = styled.div`
+  max-width: 1000px;
+  width: 1000px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const Title = styled.p`
+  font-size: 24px;
+  font-weight: bold;
+  margin: auto 16px;
+`
+
+const Menu = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const MenuList = styled.li``
+
+const MenuItem = styled(Link)`
+  padding: 16px 16px;
+  margin: auto 16px;
+  font-weight: bold;
+`
